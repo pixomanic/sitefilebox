@@ -1,0 +1,36 @@
+<ion-view title="Templates  @ {{currentUser.project}}" id="templates">
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+        </button>
+    </ion-nav-buttons> -->
+    <ion-nav-buttons side="right">
+        <!-- <button class="button button-clear button-icon icon ion-ios-plus" ng-click="openModal()">
+        </button> -->
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+        </button>
+    </ion-nav-buttons>
+
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-calm" ng-click="myFilter = 'Puwer'" ng-class="{active: myFilter === 'Puwer'}">Puwer</a>
+
+            <a class="button button-calm" ng-click="myFilter = 'Loler'" ng-class="{active: myFilter === 'Loler'}">Loler</a>
+
+            <a class="button button-calm" ng-click="myFilter = 'List'" ng-class="{active: myFilter === 'List'}">List</a>
+
+            <a class="button button-calm" ng-click="myFilter = ''" ng-class="{active: myFilter === ''}">All</a>
+        </div>
+    </div>
+    <ion-content padding="false" class="has-header" class="has-subheader">
+        <div class="spacer" style="width: 300px; height: 33px;"></div>
+        <div ng-if="reports !== undefined && !reports.length" class="no-results">
+            <p>No Results</p>
+        </div>
+        <ion-list show-delete="false" can-swipe="true" id="templateList" class=" manual-list-fullwidth ">
+            <ion-item class="item item-icon-right" ng-repeat="(key, template) in templates" ng-click="">{{template.name}}<i ng-show="report.submitted" class="icon ion-ios-checkmark-empty"></i>
+            </ion-item>
+     </ion-list>
+
+    </ion-content>
+    <fab  ui-sref="app.builder"></fab>
+</ion-view>

@@ -1,0 +1,35 @@
+<ion-modal-view style="width: 90%; height: 90%; top: 5%; left: 5%; right: 5%; bottom: 5%;">
+
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class=" button button-clear " ng-click="closeView()">Close</button>
+        <h1 class="title">{{selected.name}}</h1>
+        <button class="button button-clear" ng-click="editItem(selected.$id)">Edit</button>
+    </ion-header-bar>
+    <ion-content>
+        <ul class="list">
+            <li class="item calm">
+                Plant Item Name:<span class="item-note dark">{{selected.name}}</span>
+            </li>
+
+            <li class="item calm">
+                Plant Serial Number:<span class="item-note dark">{{selected.serial}}</span>
+            </li>
+
+            <li class="item calm">
+                Hire start date:<span class="item-note dark">{{selected.hirestart | date:'dd-MMMM-yyyy'}}</span>
+            </li>
+
+            <li class="item calm">
+                Hire end date:<span class="item-note dark">{{selected.hireend | date:'dd-MMMM-yyyy'}}</span>
+            </li>
+
+            <li class="item calm">
+                Plant Category:<span class="item-note dark">{{selected.category}}</span>
+            </li>
+
+            <li class="item calm">
+                Order Number:<span class="item-note dark">{{selected.orderNumber}}</span>
+            </li>
+        </ul>
+    </ion-content>
+</ion-modal-view>

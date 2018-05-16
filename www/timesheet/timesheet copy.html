@@ -1,0 +1,160 @@
+<ion-view title="Timesheet  @ {{currentUser.project}}" id="timesheet">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-albums-outline" ng-show="booking" ng-click="toggle()">
+        </button>
+        <button class="button button-icon icon ion-ios-compose-outline" ng-show="albums" ng-click="toggle()">
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-icon icon ion-ios-plus" ng-click="showAdd()" ng-disabled="opExist()">
+        </button>
+    </ion-nav-buttons>
+
+    <!--<div class="bar bar-subheader" ng-show="booking">-->
+
+
+
+    <!--</div>-->
+
+    <ion-content padding="false" class="has-header">
+
+<!--        <div class="spacer" style="width: 300px; height: 40px;" ng-show="booking"></div>-->
+
+        <ion-list ng-show="booking" can-swipe="true" show-delete="data.showDelete" can-swipe="true" id="opList" class=" manual-list-fullwidth ">
+
+<!--
+            <ion-item>
+                <div class="button-bar">
+                    <a class="button button-calm button-small" ng-click="prevDay()"><i class="ion-ios-arrow-left"></i>
+                </a>
+                    <a class="button button-positive button-small todayTimes" ng-disabled="true">{{selectedDate}}</a>
+
+                    <a class="button button-calm button-small" ng-click="nextDay()"><i class=" ion-ios-arrow-right"></i></a>
+                </div>
+            </ion-item>
+-->
+            <ion-item  ng-repeat="(key, op) in ops | orderBy:'position.id'">{{op.firstname}} {{op.lastname}}
+             
+                    <div style="float: right; padding-top: 16px;">
+                  
+           <button class="button button-primary button-small" ng-model="op.weekDay.monday" ng-click=" onDayClick() " ng-class="op.weekDay.monday.clicked?'button-positive':'button-stable button-outline'">
+      Mo
+    </button>
+           <button class="button button-primary button-small" ng-model="op.weekDay.tuesday" ng-click="op.weekDay.tuesday.clicked=!op.weekDay.tuesday.clicked" ng-class="op.weekDay.tuesday.clicked?'button-positive':'button-stable button-outline'">
+      Tu
+    </button>
+           <button class="button button-primary button-small" ng-model="op.weekDay.wednesday" ng-click="op.weekDay.wednesday.clicked=!button.op.weekDay.wednesday" ng-class="op.weekDay.wednesday.clicked?'button-positive':'button-stable button-outline'">
+      We
+    </button>
+           <button class="button button-primary button-small" ng-model="op.weekDay.thursday" ng-click="op.weekDay.thursday.clicked=!op.weekDay.thursday.clicked" ng-class="op.weekDay.thursday.clicked?'button-positive':'button-stable button-outline'">
+      Th
+    </button>
+           <button class="button button-primary button-small" ng-model="op.weekDay.friday" ng-click="op.weekDay.friday.clicked=!op.weekDay.friday.clicked" ng-class="op.weekDay.friday.clicked?'button-positive':'button-stable button-outline'">
+      Fr
+    </button>
+           <button class="button button-primary button-small" ng-model="op.weekDay.saturday" ng-click="op.weekDay.saturday.clicked=!op.weekDay.saturday.clicked" ng-class="op.weekDay.saturday.clicked?'button-positive':'button-assertive button-outline'">
+      Sa
+    </button>
+           <button class="button button-primary button-small" ng-model="op.weekDay.sunday" ng-click="op.weekDay.sunday.clicked=!op.weekDay.sunday.clicked" ng-class="op.weekDay.sunday.clicked?'button-positive':'button-assertive button-outline'">
+      Su
+    </button>
+           <button class="button button-primary button-small" ng-model="op.hours" ng-click="showPopup()" ng-class="op.hours?'button-positive':'button-assertive button-outline'">
+      {{op.hours}} hrs
+    </button>
+           <button class="button button-primary button-small" ng-model="op.notes" ng-click="showPopup2()" ng-class="op.notes?'button-positive':'button-assertive button-outline'">
+      <i class="icon ion-ios-compose-outline"></i>
+    </button>
+                </div>
+               
+<!--
+                <ion-delete-button class="ion-minus-circled" ng-click="deleteOp(op)"></ion-delete-button><span class="item-note">
+      {{op.weekDay[selectedDate]}} Shift. {{op.hours}} Hour(s) 
+    </span>
+                <ion-option-button class="ion-plus-round button-balanced" ng-click="shiftPlus(op)"></ion-option-button>
+                <ion-option-button class="ion-minus-round button-assertive" ng-click="shiftMinus(op)"></ion-option-button>
+                <ion-option-button class="button-calm" ng-click="showPopup(op)"><i class="icon ion-clock"></i></ion-option-button>
+                <ion-option-button class="button-energized" ng-click="showPopup2(op)"><i class="icon ion-ios-compose-outline"></i></ion-option-button>
+-->
+        </ion-list>
+
+        <div ng-hide="true">
+            <table id="Timesheet">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                        <th>Total</th>
+                        <th>Hours</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="op in ops">
+                        <td>{{op.firstname+' '+op.lastname}}</td>
+                        <td>{{op.weekDay.monday === 0 ? "-" : op.weekDay.monday}}</td>
+                        <td>{{op.weekDay.tuesday === 0 ? "-" : op.weekDay.tuesday }}</td>
+                        <td>{{op.weekDay.wednesday === 0 ? "-" : op.weekDay.wednesday }}</td>
+                        <td>{{op.weekDay.thursday === 0 ? "-" : op.weekDay.thursday}}</td>
+                        <td>{{op.weekDay.friday === 0 ? "-" : op.weekDay.friday}}</td>
+                        <td>{{op.weekDay.saturday === 0 ? "-" : op.weekDay.saturday}}</td>
+                        <td>{{op.weekDay.sunday === 0 ? "-" : op.weekDay.sunday}}</td>
+                        <td>{{(op.weekDay.monday+op.weekDay.tuesday+op.weekDay.wednesday+op.weekDay.thursday+op.weekDay.friday+op.weekDay.saturday+op.weekDay.sunday)=== 0 ? "-" : (op.weekDay.monday+op.weekDay.tuesday+op.weekDay.wednesday+op.weekDay.thursday+op.weekDay.friday+op.weekDay.saturday+op.weekDay.sunday)}}</td>
+                        <td>{{op.hours === "0" ? "-" : op.hours}}</td>
+                        <td>{{op.notes === null ? "-" : op.notes}}</td>
+                        <!--<td> <img style="width:100px; height:30px;" src="{{currentUser.signature}}" ng-show="settings.onSignature"></td>-->
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+<!--     <div class="spacer" style="width: 300px; height: 40px;" ng-show="albums"></div>
+-->
+        <ion-list ng-show="albums" show-delete="false" can-swipe="true" id="reportList" class=" manual-list-fullwidth ">
+            <ion-item class="item item-icon-right" ng-repeat="(key, timesheet) in timesheets | orderBy:'-date'" ng-click="showDetails(timesheet)">{{timesheet.name}}<i ng-show="timesheet.submitted" class="icon ion-ios-checkmark-empty"></i>
+            </ion-item>
+        </ion-list>
+       
+       
+<!--
+       <div> 
+       
+       <div class="item">
+           <button class="button button-primary button-small" ng-model="op.mo" ng-click="op.mo.clicked=!op.mo.clicked" ng-class="op.mo.clicked?'button-positive':'button-stable button-outline'">
+      Mo
+    </button>
+           <button class="button button-primary button-small" ng-model="op.tu" ng-click="op.tu.clicked=!op.tu.clicked" ng-class="op.tu.clicked?'button-positive':'button-stable button-outline'">
+      Tu
+    </button>
+           <button class="button button-primary button-small" ng-model="op.we" ng-click="op.we.clicked=!button.op.we" ng-class="op.we.clicked?'button-positive':'button-stable button-outline'">
+      We
+    </button>
+           <button class="button button-primary button-small" ng-model="op.th" ng-click="op.th.clicked=!op.th.clicked" ng-class="op.th.clicked?'button-positive':'button-stable button-outline'">
+      Th
+    </button>
+           <button class="button button-primary button-small" ng-model="op.fr" ng-click="op.fr.clicked=!op.fr.clicked" ng-class="op.fr.clicked?'button-positive':'button-stable button-outline'">
+      Fr
+    </button>
+           <button class="button button-primary button-small" ng-model="op.sa" ng-click="op.sa.clicked=!op.sa.clicked" ng-class="op.sa.clicked?'button-positive':'button-assertive button-outline'">
+      Sa
+    </button>
+           <button class="button button-primary button-small" ng-model="op.su" ng-click="op.su.clicked=!op.su.clicked" ng-class="op.su.clicked?'button-positive':'button-assertive button-outline'">
+      Su
+    </button>
+           <button class="button button-primary button-small" ng-model="op.su" ng-click="op.su.clicked=!op.su.clicked" ng-class="op.su.clicked?'button-positive':'button-positive button-outline'">
+      hours
+    </button>
+            Total: 6 Hours: 6
+            </div>
+            </span>
+            </div>
+            
+-->
+       
+    </ion-content>
+</ion-view>

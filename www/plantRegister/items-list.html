@@ -1,0 +1,18 @@
+<h4 ng-hide="items !== undefined && !items.length" class="padding">Total number of items - <span ng-show="howManyItems" class="badge badge-positive">{{total.length}}</span></h4>
+
+
+<category ng-hide="items !== undefined && !items.length"></category>
+
+<ion-list can-swipe="true" class="">
+
+    <ion-item ui-sref="app.item({itemId: item.$id})" class="item animate-item-load ng-enter-stagger" ng-repeat="(key, item) in items |   orderBy:'-date' | filter: currentCat  as total">{{item.name}} - {{item.serial}}
+
+        <!--
+        <ion-option-button class="button-balanced icon ion-ios-cloud-download" ng-click="previewPdf(key)">
+        </ion-option-button>
+-->
+        <ion-option-button class="button-assertive icon ion-ios-trash" ng-click="deleteItem(item.$id)">
+        </ion-option-button>
+    </ion-item>
+
+</ion-list>

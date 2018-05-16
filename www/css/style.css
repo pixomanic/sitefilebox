@@ -1,1 +1,193 @@
 /* Empty. Add your own CSS if you like */
+.custom-textarea {
+    max-width: 100%; 
+    width: 100%; 
+    /* height: 20vh;  */
+}
+
+.input-full-width {
+    width: 100%;
+    display: table;
+}
+
+/* Tool expanding details */
+.list .item.item-custom.active {
+    background: rgb(0, 161, 225);
+    color: #fff;
+}
+.list .item.item-accordion {
+    line-height: 38px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 0.09s all linear;
+  }
+  .list .item.item-accordion.ng-hide {
+    line-height: 0px;
+  }
+  .list .item.item-accordion.ng-hide-add,
+  .list .item.item-accordion.ng-hide-remove {
+    display: block !important;
+  }
+/* ******************************* */
+
+.tool-text {
+    font-size: 12px;
+    color: rgb(0, 161, 225);
+    align-self: center;
+    padding-top: 5px;
+}
+
+div.tool-text {
+    width: 75px;
+    margin-left: -15px;
+}
+
+.icon-circle,
+.icon-circle-large,
+.icon-circle-small {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    /*padding: 16px;*/
+    width: 45px;
+    /* 60*/
+    height: 45px;
+    font-size: 40px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid #ebebeb;
+    background: rgb(0, 161, 225);
+    /*#ececec;ebebeb*/
+    color: #000;
+    text-align: center;
+    /*vertical-align: middle;*/
+}
+
+.scroll-view {
+    margin-top: -15px;
+}
+
+
+/* Hide ion-content scrollbar */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-item {
+    display: inline-block;
+}
+
+.selectable-icon {
+    margin: 5px 5px 5px 5px;
+    color: white;
+    font-size: 30px;
+    border-radius: 26px 26px 26px 26px;
+    font-weight: 100;
+}
+
+.todayTimes {
+    text-transform: uppercase;
+}
+
+
+/*--------*/
+
+.popup-container .popup {
+    width: 260px;
+}
+
+.signature-output {
+    width: auto;
+    height: 60px;
+}
+
+.item-pad {
+    width: 500px;
+    height: 200px;
+}
+
+.signature-pad {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 500px;
+    height: 200px;
+}
+
+.spinner svg {
+    width: 50px;
+    height: 50px;
+    /* stroke: #444;*/
+    /*    fill: #444;*/
+}
+
+.hours {
+    text-align: center;
+}
+
+
+/** Float button */
+
+.float-button {
+    background-color: #ff0000;
+    opacity: 1;
+    color: white;
+    border-radius: 50%;
+    /*border-radius:15% 0 0 0;*/
+    width: 30px;
+    padding: 25px;
+    font-size: 40px;
+    position: fixed;
+    bottom: 5%;
+    /* Adjust height */
+    right: 5%;
+    /* Adjust position */
+    z-index: 1000;
+}
+
+
+.float-button .height_fix {
+    margin-top: 100%;
+    border: 1px solid red;
+}
+
+.float-button .content {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin-top: -20px;
+    color: white;
+}
+
+.no-results {
+    color: gray;
+    font-size: 20px;
+    padding: 50px;
+    text-align: center;
+}
+
+.tab-item.tab-item-active,
+.tab-item.active,
+.tab-item.activated {
+    color: white;
+    opacity: 1;
+    background-color: blue;
+}
+
+.tab-item {
+    opacity: 1;
+    background-color: #387EF5;
+}
+
+@media (max-width: 680px) {
+    .active .modal-backdrop-bg {
+        opacity: .5;
+        transition: background .25s ease-in-out;
+        background-color: #000;
+    }
+}

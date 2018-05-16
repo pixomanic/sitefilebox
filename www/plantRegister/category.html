@@ -1,0 +1,11 @@
+<!--------filter------->
+<!-- `ng-model` represents the home for our selected value. -->
+
+<form class="list">
+    <label class="item item-input item-select" name="category">
+        <span class="input-label">Select</span>
+        <select ng-model="currentCat" ng-options="item.category as item.category for item in items | unique: 'category' | orderBy: 'item.category'">
+            <option selected>All</option>
+        </select>
+    </label>
+</form>

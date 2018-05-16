@@ -1,0 +1,51 @@
+<ion-view title="Template Builder" id="builder">
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+        </button>
+    </ion-nav-buttons> -->
+   
+    <ion-nav-buttons side="right">
+
+        <button class="button button-clear" ng-click="saveTemplate()">Done
+            </button>
+    </ion-nav-buttons>
+
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-calm" ng-click="myFilter = 'Fields'" ng-class="{active: myFilter === 'Puwer'}">Puwer</a>
+
+            <a class="button button-calm" ng-click="myFilter = 'Loler'" ng-class="{active: myFilter === 'Loler'}">Loler</a>
+        </div>
+    </div>
+
+    <ion-content padding="false" class="has-header" class="has-subheader">
+        <div class="spacer" style="width: 300px; height: 40px;"></div>
+        <!-- <div ng-if="reports !== undefined && !reports.length" class="no-results">
+            <p>No Results</p>
+        </div> -->
+        Template name:
+        <edit-in-place value="template.name"></edit-in-place>
+        <ion-list>
+            <div  ng-repeat="prop in template">
+            <ion-item  ng-click="toggleGroup(prop)" class="item-custom item-light item-icon-left item-icon-right"  id="prop{{prop.id}}"  ng-class="{active: isGroupShown(prop)}" >
+                    <i class="icon ion-{{prop.tool.value}}"></i>
+                    {{prop.tool.model ? prop.tool.model : prop.tool.text}}                
+                    <i class="icon" ng-click="delete($index, prop)" ng-class="isGroupShown(prop) ? 'ion-checkmark' : 'ion-close assertive'"></i>
+            </ion-item>
+            <ion-item class="item-accordion" ng-show="isGroupShown(prop)">
+                            <!-- <input type="text" class="item item-input-inset input-full-width" name="" placeholder="Enter your text" ng-model="prop.tool.model" > -->
+                            <textarea  class="custom-textarea" type="text" name="text" placeholder="{{prop.tool.placeholder}}" ng-model="prop.tool.model" auto-grow></textarea>
+                            {{prop.tool}}
+            </ion-item>
+        </div>
+        </ion-list>
+
+    </ion-content>
+    <div class="bar bar-footer bar-positive">
+            <button class="button button-clear">Left</button>
+            <div class="title" style="padding-top: 5px; "><button class="button button-outline button-light" ng-click="openModal()">Add Element</button></div>
+            <button class="button button-clear">Right</button>
+          </div>
+          
+    <!-- <fab ng-click="openModal()"></fab> -->
+</ion-view>

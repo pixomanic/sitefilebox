@@ -1,0 +1,31 @@
+<ion-view title="Timesheet" id="timesheet">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-trash-a" ng-click="data.showDelete = !data.showDelete; data.showReorder = false">
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="data.showDelete = false; data.showReorder = !data.showReorder">
+            Reorder
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+        <ion-list>
+            <ion-item>
+                <button class="buutton button-block button-calm">Date
+                </button>
+            </ion-item>
+        </ion-list>
+        <ion-list show-delete="data.showDelete" show-reorder="data.showReorder" can-swipe="true" id="opList" class=" manual-list-fullwidth ">
+            <ion-item ng-repeat="(key, op) in ops | orderBy:'index' track by key ">{{op.firstname}} {{op.lastname}}--{{op.index}}
+                <ion-delete-button class="ion-minus-circled" ng-click="ops.splice($index, 1)"></ion-delete-button>
+                <span class="item-note">
+      {{op.shift}} Shift. {{op.hours}} Hour(s)
+    </span>
+                <ion-option-button class="ion-plus-round button-balanced" ng-click="shiftPlus(op)"></ion-option-button>
+                <ion-option-button class="ion-minus-round button-assertive" ng-click="shiftMinus(op)"></ion-option-button>
+                <ion-option-button class="button-calm" ng-click="showPopup(op)"><i class="icon ion-clock"></i></ion-option-button>
+                <ion-reorder-button class="ion-navicon" on-reorder="moveItem(op, $fromIndex, $toIndex)"></ion-reorder-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

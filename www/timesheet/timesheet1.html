@@ -1,0 +1,65 @@
+<ion-view title="Timesheet" id="timesheet">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-icon icon ion-ios-plus" ng-click="showAdd()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header has-subheader">
+
+        <ion-list can-swipe="true" id="opList" class="manual-list-fullwidth ">
+            <ion-item ng-repeat="(key, op) in ops | orderBy:'position.id'">{{op.firstname}} {{op.lastname}}--{{op.index}}
+                <ion-delete-button class="ion-minus-circled" ng-click="ops.splice($index, 1)"></ion-delete-button>
+                <span class="item-note">
+      {{op.shift}} Shift. {{op.hours}} Hour(s)
+    </span>
+                <ion-option-button class="ion-plus-round button-balanced" ng-click="shiftPlus(op)"></ion-option-button>
+                <ion-option-button class="ion-minus-round button-assertive" ng-click="shiftMinus(op)"></ion-option-button>
+                <ion-option-button class="button-calm" ng-click="showPopup(op)"><i class="icon ion-clock"></i></ion-option-button>
+                <ion-reorder-button class="ion-navicon" on-reorder="moveItem(op, $fromIndex, $toIndex)"></ion-reorder-button>
+            </ion-item>
+        </ion-list>
+
+        <!--    <ion-list>
+
+            <ion-item ng-repeat="(key,timesheet) in timesheets | orderBy:'-start'" ui-sref="tabsController.week({itemId: timesheet.$id})">{{timesheet.start | date:'dd-MMMM-yyyy'}}
+            </ion-item>
+
+        </ion-list>-->
+
+        <div ng-hide="true">
+            <table id="Timesheet">
+                <tr>
+                    <th>Name</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                    <th>Total</th>
+                    <th>Overtime</th>
+                    <th>Notes</th>
+                </tr>
+                <tr ng-repeat="op in ops">
+                    <td>{{op.firstname + " " + op.lastname}}</td>
+                    <td>{{op.weekDay.monday}}</td>
+                    <td>{{op.weekDay.tuesday}}</td>
+                    <td>{{op.weekDay.thursday}}</td>
+                    <td>{{op.weekDay.friday}}</td>
+                    <td>{{op.weekDay.saturday}}</td>
+                    <td>{{op.weekDay.sunday}}</td>
+                    <td>{{total}}</td>
+                    <td>{{op.hours}}</td>
+                    <td>{{op.notes}}</td>
+
+                </tr>
+            </table>
+        </div>
+
+
+    </ion-content>
+</ion-view>

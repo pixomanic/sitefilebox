@@ -1,0 +1,26 @@
+<ion-view title="My Projects" id="projects">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+        </button>
+    </ion-nav-buttons>
+    <!-- <ion-nav-buttons side="left">
+        <!-- <button class="button button-clear button-icon icon ion-ios-plus" ng-click="showAdd()">
+        </button> -->
+    <!-- </ion-nav-buttons> -->
+    <ion-content padding="false" class="has-header">
+        <div ng-if="projects !== undefined && !projects.length" class="no-results">
+            <p>No Results</p>
+        </div>
+        <ion-list can-swipe="true">
+            <ion-item ng-repeat="(key, project) in projects | orderBy:'name'" ui-sref="app.project({selectedId: project.$id})">{{project.name}}- {{project.contractor}}<span class="item-note">
+      {{project.startDate | date:'dd-MMMM-yyyy'}}
+    </span>
+                <ion-option-button class="button button-balanced" ng-click="editProject(project.$id)">Edit</ion-option-button>
+
+                <ion-option-button class="button button-assertive" ng-click="deleteProject(project.$id)">Delete</ion-option-button>
+
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <fab ng-click="showAdd()"></fab>
+</ion-view>

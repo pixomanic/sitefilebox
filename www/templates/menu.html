@@ -1,36 +1,61 @@
-<ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
 
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
-  </ion-side-menu-content>
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive">
+            <!-- <ion-nav-back-button>
+            </ion-nav-back-button> -->
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
-        </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-header-bar class="bar-calm">
+            <h1 class="title">Menu</h1>
+        </ion-header-bar>
+        <ion-content>
+            <ion-list>
+                <ion-item class="item-avatar">
+                    <img src="img/user.png">
+                    <h2>{{currentUser.firstname + ' ' + currentUser.lastname}}</h2><span class="item-note"></span>
+                    <p>{{currentUser.project}}</p>
+                </ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/dash">
+                    <i class="icon ion-ios-speedometer-outline"></i>Dashboard
+                </ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/ops">
+                    <i class="icon ion-ios-people-outline"></i>Operatives
+                </ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/plantRegister">
+                    <i class="icon ion-settings"></i>Plant
+                </ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/reports">
+                    <i class="icon ion-ios-filing-outline"></i>Reports
+                </ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/timesheet">
+                    <i class="icon ion-ios-people-outline"></i>Timesheet
+                </ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/diary">
+                    <i class="icon ion-ios-bookmarks-outline"></i>Diary
+                </ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/orders">
+                    <i class="icon ion-ios-cart-outline"></i>Orders
+                </ion-item>
+                <ion-item class="divide"></ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/docs">
+                    <i class="icon ion-ios-color-wand-outline"></i>Templates
+                </ion-item>
+                <ion-item class="item-icon-left dark" menu-close href="#/app/account/settings">
+                    <i class="icon ion-ios-gear-outline"></i>Settings
+                </ion-item>
+                <ion-item class="item-icon-left assertive" menu-close ng-click="logout()">
+                    <i class="icon ion-log-out assertive"></i>Logout
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
 </ion-side-menus>

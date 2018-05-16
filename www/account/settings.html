@@ -1,0 +1,61 @@
+<ion-view title="Settings" id="settings">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="updateSettings()">Update
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content padding="false" class="has-header">
+
+        <ion-list>
+            <ion-item class="item calm item-input item-stacked-label ">
+                <edit-in-place value="currentUser.firstname"></edit-in-place>
+            </ion-item>
+            <ion-item class="item calm item-input item-stacked-label ">
+                <edit-in-place value="currentUser.lastname"></edit-in-place>
+            </ion-item>
+            <ion-item class="item calm item-input item-stacked-label ">
+                <edit-in-place value="currentUser.email"></edit-in-place>
+            </ion-item>
+            <ion-item class="item calm item-input item-stacked-label ">
+                <edit-in-place value="currentUser.password"></edit-in-place>
+            </ion-item>
+            <ion-item>
+                Current project: {{currentUser.project}}
+            </ion-item>
+
+            <div class="list">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Project
+                    </div>
+                    <select ng-model="currentUser.project" ng-options="project.name as project.name for project in projects">
+                        <option>Change your Project</option>
+                    </select>
+                </label>
+                <ion-item class="item calm item-input item-stacked-label ">
+                    <edit-in-place value="currentUser.contractor"></edit-in-place>
+                </ion-item>
+            </div>
+
+
+
+            <ng-change ng-change="currentUser.signature" ng-model="currentUser.signature">
+                <ion-item class="item item-button-right">
+                    Signature
+
+                    <div class="buttons">
+                        <button class="button button-small button-assertive" ng-click="deleteSign()" ng-show="currentUser.signature">Delete</button>
+                        <button ng-click="showSign()" class="button button-small button-calm" ng-show="!currentUser.signature">Create</button>
+                    </div>
+                </ion-item>
+
+                <div class="card" ng-hide="!currentUser.signature">
+                    <div class="item">
+                        <img ng-show="currentUser.signature" class="signature-output" ng-src="{{currentUser.signature}}">
+                    </div>
+                </div>
+            </ng-change>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

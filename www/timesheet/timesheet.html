@@ -1,0 +1,89 @@
+<ion-view title="Timesheet  @ {{currentUser.project}}" id="timesheet">
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-ios-albums-outline" ng-show="booking" ng-click="toggle()">
+        </button>
+        <button class="button button-icon icon ion-ios-compose-outline" ng-show="albums" ng-click="toggle()">
+        </button>
+    </ion-nav-buttons> -->
+    <ion-nav-buttons side="right">
+        <!-- <button class="button button-clear button-icon icon ion-ios-plus" ng-click="showAdd()" ng-disabled="opExist()">
+        </button> -->
+        <button class="button button-icon icon ion-ios-search-strong" ng-show="albums" ng-click="showFilterBar()">
+            </button>
+    </ion-nav-buttons>
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-calm" ng-click="onCurrent()" ng-class="{active: booking}">Current Week</a>
+            <a class="button button-calm" ng-click="onTimesheets()" ng-class="{active: albums}">Timesheets</a>
+        </div>
+    </div>
+
+
+    <ion-content padding="false" class="has-header has-subheader">
+
+        <!--        <div class="spacer" style="width: 300px; height: 40px;" ng-show="booking"></div>-->
+
+        <ion-list ng-show="booking" can-swipe="true" show-delete="data.showDelete" can-swipe="true" id="opList" class=" manual-list-fullwidth ">
+
+            <ion-item ng-repeat="(key, op) in ops | orderBy:'position.id'">{{op.firstname}} {{op.lastname}}
+
+                <div style="float: right; padding-top: 16px;">
+
+                    <button class="button button-primary button-small" ng-model="day" ng-click="onDayClick(op, day)" ng-value="{{day}}" ng-class="op.weekDay[day.toLowerCase()]?'button-positive':'button-positive button-outline'" ng-repeat="day in weekday">{{day | limitTo : 3}}
+            </button>
+
+
+                    <button class="button button-primary button-small" ng-model="op.hours" ng-click="showPopup(op)" ng-class="op.hours?'button-positive':'button-assertive button-outline'">
+      {{op.hours}} hrs
+    </button>
+                    <button class="button button-primary button-small" ng-model="op.notes" ng-click="showPopup2(op)" ng-class="op.notes?'button-positive':'button-assertive button-outline'">
+      <i class="icon ion-ios-compose-outline"></i>
+    </button>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <div ng-hide="true">
+            <table id="Timesheet">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                        <th>Total</th>
+                        <th>Hours</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key, op) in ops | orderBy:'position.id'">
+                        <td>{{op.firstname+' '+op.lastname}}</td>
+                        <td>{{op.weekDay.monday === false ? "-" : "1"}}</td>
+                        <td>{{op.weekDay.tuesday === false ? "-" : "1" }}</td>
+                        <td>{{op.weekDay.wednesday === false ? "-" : "1" }}</td>
+                        <td>{{op.weekDay.thursday === false ? "-" : "1"}}</td>
+                        <td>{{op.weekDay.friday === false ? "-" : "1"}}</td>
+                        <td>{{op.weekDay.saturday === false ? "-" : "1"}}</td>
+                        <td>{{op.weekDay.sunday === false ? "-" : "1"}}</td>
+                        <td>{{(op.weekDay.monday+op.weekDay.tuesday+op.weekDay.wednesday+op.weekDay.thursday+op.weekDay.friday+op.weekDay.saturday+op.weekDay.sunday)=== 0 ? "-" : (op.weekDay.monday+op.weekDay.tuesday+op.weekDay.wednesday+op.weekDay.thursday+op.weekDay.friday+op.weekDay.saturday+op.weekDay.sunday)}}</td>
+                        <td>{{op.hours === "0" ? "-" : op.hours}}</td>
+                        <td>{{op.notes === null ? "-" : op.notes}}</td>
+                        <!--<td> <img style="width:100px; height:30px;" src="{{currentUser.signature}}" ng-show="settings.onSignature"></td>-->
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <ion-list ng-show="albums" show-delete="false" can-swipe="true" id="reportList" class=" manual-list-fullwidth ">
+            <ion-item class="item item-icon-right" ng-repeat="(key, timesheet) in timesheets | orderBy:'-date'" ng-click="showDetails(timesheet)">{{timesheet.name}}<i ng-show="timesheet.submitted" class="icon ion-ios-checkmark-empty"></i> scwecwec
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <fab ng-click="showAdd()" ng-show="albums"></fab>
+</ion-view>

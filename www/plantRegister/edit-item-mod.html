@@ -1,0 +1,105 @@
+<ion-modal-view>
+
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class=" button button-clear " ng-click="cancel()">Cancel</button>
+        <h1 class="title">{{item.name}}</h1>
+        <button class="button button-clear" ng-click="updateItem(item)">Save</button>
+    </ion-header-bar>
+    <ion-content class="has-header">
+
+        <ul class="list">
+
+
+            <li class="item calm item-input item-stacked-label ">
+                Plant Item Name:
+                <edit-in-place value="item.name"></edit-in-place>
+            </li>
+
+            <li class="item calm item-input item-stacked-label">
+                Plant Serial Number:
+                <edit-in-place value="item.serial"></edit-in-place>
+            </li>
+
+            <div class="check-element animate-show" ng-show="item.checked2">
+                <label class="item item-input">
+                    <input type="text" name="hire" placeholder="Or type your own..." ng-model="item.hire">
+                </label>
+            </div>
+            <div class="check-element animate-show" ng-hide="item.checked2">
+                <label class="item item-input item-select">
+                    <div class="input-label calm">
+                        Hire Company
+                    </div>
+                    <select ng-model="item.hire" ng-options="item.hire as item.hire for item in items | unique2: 'hire' | orderBy: 'item.hire'">
+                        <option selected>{{item.hire}}</option>
+
+                    </select>
+                </label>
+            </div>
+            <ion-checkbox type="checkbox" checked="false" ng-model="item.checked2" aria-label="Toggle ngHide"><span class="input-label calm">Other company</span></ion-checkbox>
+
+            <div class="check-element animate-show" ng-show="item.checked">
+                <label class="item item-input">
+                    <input type="text" name="cat" placeholder="Or type your own..." ng-model="item.category">
+                </label>
+            </div>
+            <div class="check-element animate-show" ng-hide="item.checked">
+                <label class="item item-input item-select">
+                    <div class="input-label calm">
+                        Category
+                    </div>
+                    <select ng-model="item.category" ng-options="cat as cat for cat in cats">
+                        <option value="{{item.category}}" selected>{{item.category}}</option>
+                    </select>
+                </label>
+            </div>
+            <ion-checkbox type="checkbox" checked="false" ng-model="item.checked" aria-label="Toggle ngHide"><span class="input-label calm">Custom Category</span></ion-checkbox>
+
+
+            <li class="item calm item-input item-stacked-label">
+                Result ofInspection:
+                <edit-in-place value="item.inspectionComment"></edit-in-place>
+            </li>
+
+            <li class="item dark item-stacked-label item-icon-right">
+                <span ng-click="openStart()"><ion-note item-right class="calm"> Hire start date:</ion-note>
+                <label>{{item.hirestart | date:'dd-MMMM-yyyy'}}</label></span>
+                <button class="button button-icon icon ion-ios-close-outline assertive" ng-click="resetStart()" ng-show="item.hirestart"></button>
+
+            </li>
+
+            <li class="item dark item-stacked-label item-icon-right">
+                <span ng-click="openEnd()">
+                <ion-note item-right class="calm"> Hire end date:</ion-note>
+                <label>{{item.hireend | date:'dd-MMMM-yyyy'}}</label></span>
+                <button class="button button-icon icon ion-ios-close-outline assertive" ng-click="resetEnd()" ng-show="item.hireend"></button>
+
+            </li>
+
+
+
+            <li class="item calm item-input item-stacked-label">
+                Order Number:
+                <edit-in-place value="item.orderNumber"></edit-in-place>
+            </li>
+
+
+
+
+            <label class="item item-input">
+                <span class="input-label calm">Notes:</span>
+
+                <textarea style="width:65%; " type="text" name="itemnotes" placeholder="" ng-model="item.notes"  auto-grow></textarea>
+            </label>
+
+
+
+        </ul>
+
+
+        <!--
+        <button class="button button-assertive button-block" ng-click="deleteItem(item.$id)">Delete</button>
+-->
+
+    </ion-content>
+</ion-modal-view>

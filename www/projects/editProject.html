@@ -1,0 +1,35 @@
+<ion-modal-view>
+
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class=" button button-clear " ng-click="cancel()">Cancel</button>
+        <h1 class="title">{{project.name}}</h1>
+        <button class="button button-clear" ng-click="updateProject(project.$id)">Save</button>
+    </ion-header-bar>
+    <ion-content class="has-header">
+
+        <ul class="list">
+
+
+            <li class="item calm item-input item-stacked-label ">
+                Project name:
+                <edit-in-place value="project.name"></edit-in-place>
+
+            </li>
+
+            <li class="item calm item-input item-stacked-label">
+                Contractor name:
+                <edit-in-place value="project.contractor"></edit-in-place>
+            </li>
+            <li class="item calm item-input item-stacked-label ">
+                Project number:
+                <edit-in-place value="project.number"></edit-in-place>
+            </li>
+
+            <li class="item dark item-stacked-label item-icon-right">
+                <span ng-click="openStart()"><ion-note item-right class="calm"> Project start date:</ion-note>
+                <label>{{project.startDate | date:'dd-MMMM-yyyy'}}</label></span>
+                <button class="button button-icon icon ion-ios-close-outline assertive" ng-click="resetStart()" ng-show="project.startDate"></button>
+            </li>
+        </ul>
+    </ion-content>
+</ion-modal-view>

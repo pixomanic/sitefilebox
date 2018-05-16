@@ -1,0 +1,79 @@
+<ion-view title="Dashboard" id="dash">
+    <ion-content padding="false" class="has-header" style="background-color: rgba(167, 214, 233, 0.952);">
+        <ion-list>
+            <ion-item class="item item-icon-left" ui-sref="app.projects">
+                <i class="icon ion-ios-briefcase-outline"></i> My Projects -
+                <span ng-show="howManyItems" class="badge badge-positive">{{projects.length}}</span>
+            </ion-item>
+        </ion-list>
+
+        <div class="card">
+            <div class="item item-divider item-icon-right">
+                <i class="icon ion-ios-more"></i>{{currentUser.project}}
+            </div>
+
+            <div class="item item-text-wrap">
+                <ion-list>
+                    <ion-item class="item item-icon-left" ui-sref="app.plantRegister">
+                        <i class="icon ion-ios-list-outline"></i> Total number of Items -
+                        <span ng-show="howManyItems" class="badge badge-positive">{{items.length}}</span>
+                    </ion-item>
+
+                </ion-list>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="item item-divider item-icon-right">
+                <i class="icon ion-ios-more"></i>{{currentUser.project}}
+            </div>
+
+            <div class="item item-text-wrap">
+                <ion-list>
+                    <ion-item class="item item-icon-left" ui-sref="app.reports">
+                        <i class="icon ion-ios-filing-outline"></i> Total number of Reports -
+                        <span ng-show="howManyItems" class="badge badge-positive">{{reports.length}}</span>
+                    </ion-item>
+
+                </ion-list>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="item item-divider item-icon-right">
+                <i class="icon ion-ios-more"></i>{{currentUser.project}}
+            </div>
+
+            <div class="item item-text-wrap">
+                <ion-list>
+                    <ion-item class="item item-icon-left" ui-sref="app.ops">
+                        <i class="icon ion-ios-people"></i> Total number of Operatives -
+                        <span ng-show="howManyItems" class="badge badge-positive">{{ops.length}}</span>
+                    </ion-item>
+
+                </ion-list>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="item item-divider item-icon-right">
+                <i class="icon ion-ios-more"></i>{{currentUser.project}}
+            </div>
+
+            <div class="item item-text-wrap">
+                <ion-list>
+                    <ion-item class="item item-icon-left" ui-sref="app.timesheets">
+                        <i class="icon ion-ios-compose-outline"></i> Total number of Timesheets -
+                        <span ng-show="howManyItems" class="badge badge-positive">{{timesheets.length}}</span>
+                    </ion-item>
+
+                </ion-list>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

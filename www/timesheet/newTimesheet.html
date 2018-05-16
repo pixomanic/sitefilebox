@@ -1,0 +1,23 @@
+<div class="modal">
+    <form name="form">
+        <ion-header-bar class="bar bar-header bar-positive">
+            <div class="button button-clear" ng-click="cancel()">Cancel</div>
+            <h1 class="title">New Timesheet</h1>
+            <div class="button button-clear" ng-click="newTimesheet()" ng-disabled="!timesheet.end">Done</div>
+
+        </ion-header-bar>
+
+        <ion-content has-header="true" padding="true">
+            <label class="item item-input">Current project: {{currentUser.project}}
+            </label>
+            <ul class="list">
+
+                <li class="item dark item-stacked-label item-icon-right">
+                    <span ng-click="weekEnd()"><ion-note item-right class="calm"> Week ending date:</ion-note>
+                <label>{{timesheet.end | date:'dd-MMMM-yyyy'}}</label></span>
+                    <button class="button button-icon icon ion-ios-close-outline assertive" ng-click="resetEnd()" ng-show="timesheet.end"></button>
+                </li>
+            </ul>
+        </ion-content>
+    </form>
+</div>

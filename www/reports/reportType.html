@@ -1,0 +1,8 @@
+<form class="list">
+    <label class="item item-input item-select" name="reportType">
+        <span class="input-label">Select</span>
+        <select ng-model="currentType" ng-options="report.type as report.type for report in reports | unique: 'type' | orderBy: 'report.type'">
+            <option selected>All</option>
+        </select>
+    </label>
+</form>

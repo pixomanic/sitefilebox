@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
@@ -30,11 +31,56 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-  </head>
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="js/firebase.init.js"></script>
 
-  <body ng-app="starter">
+    <script src="lib/angularfire/dist/angularfire.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="plantRegister/plantRegister.controller.js"></script>
+    <script src="account/account.controller.js"></script>
+    <script src="account/settings.controller.js"></script>
+    <script src="account/login.controller.js"></script>
+    <script src="account/main.controller.js"></script>
+    <script src="timesheet/timesheet.controller.js"></script>
+    <script src="reports/reports.controller.js"></script>
+    <script src="projects/projects.controller.js"></script>
+    <script src="diary/diary.controller.js"></script>
+    <script src="orders/orders.controller.js"></script>
+    <script src="ops/ops.controller.js"></script>
+    <script src="docs/templates.controller.js"></script>
+    <script src="plantRegister/itemView.controller.js"></script>
+    <script src="account/auth.service.js"></script>
+    <script src="account/getUser.service.js"></script>
+    <script src="ops/ops.service.js"></script>
+    <script src="plantRegister/item.service.js"></script>
+    <script src="projects/projects.service.js"></script>
+    <script src="reports/reports.service.js"></script>
+    <script src="timesheet/timesheet.service.js"></script>
+    <script src="diary/diary.service.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/services.js"></script>
+
+
+    <script src="lib/jspdf/dist/jspdf.min.js"></script>
+    <script src="lib/jspdf-autotable/dist/jspdf.plugin.autotable.js"></script>
+    <!-- PDFMAKE -->
+    <script src="lib/pdfmake/build/pdfmake.min.js"></script>
+    <script src="lib/pdfmake/build/vfs_fonts.js"></script>
+
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <script src="lib/signature_pad/signature_pad.js"></script>
+    <!-- Only required for Tab projects w/ pages in multiple tabs -->
+    <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+    <!-- Ionic filter bar -->
+    <link rel="stylesheet" href="lib/ionic-filter-bar/dist/ionic.filter.bar.css">
+    <script src="lib/ionic-filter-bar/dist/ionic.filter.bar.min.js"></script>
+
+</head>
+
+<body ng-app="app">
     <ion-nav-view></ion-nav-view>
-  </body>
+</body>
+
 </html>

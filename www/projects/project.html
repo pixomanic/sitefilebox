@@ -1,0 +1,28 @@
+<ion-view id="project">
+    <ion-nav-title>
+        {{selected.name}}
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="editItem(selected.$id)">Edit</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="myGoBack()">Back</button>
+    </ion-nav-buttons>
+
+    <ion-content padding="false" class="has-header">
+        <ul class="list">
+            <li class="item calm">
+                Project name:<span class="item-note dark">{{selected.name}}</span>
+            </li>
+            <li class="item calm">
+                Contractor name:<span class="item-note dark">{{selected.contractor}}</span>
+            </li>
+            <li class="item calm">
+                Project number:<span class="item-note dark">{{selected.number}}</span>
+            </li>
+            <li class="item calm">
+                Project start date:<span class="item-note dark">{{selected.startDate | date:'dd-MMMM-yyyy'}}</span>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

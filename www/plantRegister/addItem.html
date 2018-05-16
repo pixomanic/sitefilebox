@@ -1,0 +1,104 @@
+<form name="form" novalidate>
+    <!-- <ion-modal-view style="width: 90%; height: 90%; top: 5%; left: 5%; right: 5%; bottom: 5%;"> -->
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button class=" button button-clear " ng-click="cancel()">Cancel</button>
+            <h1 class="title">New Plant Item</h1>
+            <button class="button button-clear" ng-click="addItem()" ng-disabled="form.$invalid">Done</button>
+        </ion-header-bar>
+
+        <ion-content has-header="true" padding="true" overflow-scroll="true">
+
+            <div class="list">
+
+                <label class="item item-input">Current project: {{currentUser.project}}
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label calm">Item Name:</span>
+                    <input type="text" name="itemname" placeholder="" ng-model="item.itemname" required>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label calm">Plant Number:</span>
+                    <input type="text" name="itemnumber" placeholder="" ng-model="item.itemnumber" required>
+                </label>
+                <div class="check-element animate-show" ng-show="item.checked2">
+                    <label class="item item-input">
+                        <input type="text" name="hire" placeholder="Or type your own..." ng-model="item.hire">
+                    </label>
+                </div>
+                <div class="check-element animate-show" ng-hide="item.checked2">
+                    <label class="item item-input item-select">
+                        <div class="input-label calm">
+                            Hire Company:
+                        </div>
+                        <!-- <select ng-model="item.hire" ng-options="hire as hire for hire in hires">
+                            <option value="" selected>Choose hire company</option>
+                        </select>-->
+                        <select ng-model="item.hire" ng-options="item.hire as item.hire for item in items | unique2: 'hire' | orderBy: 'item.hire'">
+                            <option value="">Select company</option>
+
+                        </select>
+                    </label>
+                </div>
+                <ion-checkbox type="checkbox" ng-model="item.checked2" aria-label="Toggle ngHide"><span class="input-label calm">Other company</span></ion-checkbox>
+
+                <li class="item dark item-stacked-label item-icon-right">
+                    <span ng-click="openStart()"><ion-note item-right class="calm"> Hire start date:</ion-note>
+                <label>{{item.hirestart | date:'dd-MMMM-yyyy'}}</label></span>
+                    <button class="button button-icon icon ion-ios-close-outline assertive" ng-click="resetStart()" ng-show="item.hirestart"></button>
+
+                </li>
+
+                <li class="item dark item-stacked-label item-icon-right">
+                    <span ng-click="openEnd()">
+                <ion-note item-right class="calm"> Hire end date:</ion-note>
+                <label>{{item.hireend | date:'dd-MMMM-yyyy'}}</label></span>
+                    <button class="button button-icon icon ion-ios-close-outline assertive" ng-click="resetEnd()" ng-show="item.hireend"></button>
+
+                </li>
+
+
+
+                <label class="item item-input"><span class="input-label calm">Order Number:</span>
+                    <input type="text" name="ordernumber" placeholder="" ng-model="item.ordernumber">
+                </label>
+
+
+                <div class="check-element animate-show" ng-show="item.checked">
+                    <label class="item item-input">
+                        <input type="text" name="cat" placeholder="Or type your own..." ng-model="item.cat">
+                    </label>
+                </div>
+
+                <div class="check-element animate-show" ng-hide="item.checked">
+                    <label class="item item-input item-select">
+                        <div class="input-label calm">
+                            Category
+                        </div>
+                        <select ng-model="item.cat" ng-options="cat as cat for cat in cats">
+                            <option value="" selected>Choose Category</option>
+                        </select>
+                    </label>
+                </div>
+                <ion-checkbox type="checkbox" ng-model="item.checked" aria-label="Toggle ngHide"><span class="input-label calm">Custom Category</span></ion-checkbox>
+
+                <ion-item class="item calm item-input item-stacked-label ">
+                    <h2 class="calm">Inspection Comment</h2>
+                    <edit-in-place value="item.inspectionComment"></edit-in-place>
+                </ion-item>
+
+                <label class="item item-input">
+                    <span class="input-label calm">Notes:</span>
+
+                    <textarea style="width:65%; " type="text" name="notes" placeholder="" ng-model="item.notes" auto-grow></textarea>
+                </label>
+                <div class="spacer" style="width: 300px; height: 200px;"></div>
+            </div>
+
+
+
+        </ion-content>
+    </ion-modal-view>
+</form>

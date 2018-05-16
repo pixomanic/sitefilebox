@@ -1,0 +1,49 @@
+<ion-view title="Reports" id="page8">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content padding="false" class=" manual-remove-top-padding has-header">
+
+
+        <ul class="list">
+
+            <li class="item" ng-repeat="(key, report) in reports">{{report.name}}
+                <button class="button button-full button-assertive" ng-click="previewPdf(key)">
+                    open
+                </button>
+            </li>
+            <!--ui-sref="item({itemId: item.$id})"  -->
+        </ul>
+
+
+        <div ng-hide="true">
+            <table id="Report">
+                <tr>
+                    <th>Description of Work Equipment</th>
+                    <th>Identification Number</th>
+                    <th>Date of Inspection</th>
+                    <th>Time of Inspection</th>
+                    <th>Result of Inspection (State appropriate findings, including defects)</th>
+                    <th>Signature of Person who made Inspection</th>
+                </tr>
+                <tr ng-repeat="item in list">
+                    <td>{{item.name}}</td>
+                    <td>{{item.serial}}</td>
+                    <td>{{inspectionDate | date:'dd-MMMM-yyyy'}}</td>
+                    <td>{{inspectionTime.val | date:'HH : mm'}}</td>
+                    <td>{{inspectionComment}}</td>
+                    <td>{{currentUser.signature}}</td>
+                </tr>
+            </table>
+        </div>
+    </ion-content>
+    <div class="float-button" ng-click="openModal()">
+        <span class="height-fix">
+	  	<a class="content">
+	    	<i class="ion-ios-plus-empty"> </i>
+	   	</a>
+	  </span>
+    </div>
+</ion-view>

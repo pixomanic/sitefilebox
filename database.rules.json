@@ -1,0 +1,21 @@
+{
+    "rules": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "ops": {
+            ".indexOn": "location"
+        },
+        "projects": {
+            ".indexOn": "creator"
+        },
+        "pregister": {
+            ".indexOn": "originator"
+        },
+        "reports": {
+            ".indexOn": "project"
+        },
+        "timesheet": {
+            ".indexOn": "project"
+        }
+    }
+}

@@ -1,0 +1,69 @@
+<ion-view title="Diary @ {{currentUser.project}}" id="diary">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
+        </button>
+    </ion-nav-buttons>
+
+    <div class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-calm" ng-click="myFilter = 'Planned'" ng-class="{active: myFilter === 'Planned'}">Planned</a>
+
+            <a class="button button-calm" ng-click="myFilter = 'Ongoing'" ng-class="{active: myFilter === 'Ongoing'}">Ongoing</a>
+
+            <a class="button button-calm" ng-click="myFilter = 'Complete'" ng-class="{active: myFilter === 'Complete'}">Complete</a>
+
+
+        </div>
+    </div>
+    <ion-content padding="true" class="has-header" class="has-subheader">
+        edewddwd wdwdw dwdw d wd wdwdwd {{date}}{{date}} {{date}} {{date}} {{date}} {{date}} {{date}} {{date}}{{date}}
+
+
+        <!--
+        <div class="spacer" style="width: 300px; height: 33px;"></div>
+        <div ng-if="reports !== undefined && !reports.length" class="no-results">
+            <p>No Results</p>
+        </div>
+        <ion-list show-delete="false" can-swipe="true" id="reportList" class=" manual-list-fullwidth ">
+            <ion-item class="item item-icon-right" ng-repeat="(key, report) in reports |
+orderBy:'-date' | filter: myFilter" ng-click="showDetails(report)">{{report.type}}-{{report.reportDate | date:'dd-MMMM-yyyy'}}<i ng-show="report.submitted" class="icon ion-ios-checkmark-empty"></i>
+            </ion-item>
+        </ion-list>
+        <div ng-hide="true">
+            <table id="Report">
+                <thead>
+                    <tr>
+                        <th>Description of Work Equipment</th>
+                        <th>Identification Number</th>
+                        <th>Date of Inspection</th>
+                        <th>Time of Inspection</th>
+                        <th>Result of Inspection (State appropriate findings, including defects)</th>
+                        <th>Signature of Person who made Inspection</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in list">
+                        <td>{{item.name}}</td>
+                        <td>{{item.serial}}</td>
+                        <td>{{inspectionDate | date:'dd-MMMM-yyyy'}}</td>
+                        <td>{{inspectionTime.val | date:'HH : mm'}}</td>
+                        <td>{{item.inspectionComment}}</td>
+                        <td>{{currentUser.name}}</td>
+                        <td> <img style="width:100px; height:30px;" src="{{currentUser.signature}}" ng-show="settings.onSignature"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+-->
+    </ion-content>
+    <!-- float-button part start here -->
+    <div class="float-button">
+        <span class="height-fix">
+                  <a class="content" ng-click="showAdd()">
+                    <i class="ion-ios-plus-empty"> </i>
+                   </a>
+              </span>
+    </div>
+    <!-- float-button end here -->
+</ion-view>
