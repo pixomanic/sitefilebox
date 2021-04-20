@@ -72,7 +72,7 @@ angular.module('app', [
         , closeOnSelect: false
         , disableWeekdays: []
         , from: new Date(2015, 8, 1)
-        , to: new Date(2020, 10, 30)
+        , to: new Date(2040, 10, 30)
     };
 
     ionicDatePickerProvider.configDatePicker(datePickerObj);
